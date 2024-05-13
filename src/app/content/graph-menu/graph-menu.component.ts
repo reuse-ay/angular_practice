@@ -32,6 +32,9 @@ export class GraphMenuComponent implements AfterViewInit{
         position: [10, 10],
         size: [100, 100],
         value: 'rectangle',
+        style:{
+          strokeColor:"none",
+        }
       });
     });
   }
