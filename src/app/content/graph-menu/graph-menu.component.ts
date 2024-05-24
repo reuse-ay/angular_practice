@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
-import { Cell, CellEditorHandler, ConnectionHandler, Graph, InternalEvent, PanningHandler, RubberBandHandler, SelectionCellsHandler, SelectionHandler, TooltipHandler } from '@maxgraph/core';
+import { Cell, CellEditorHandler, Clipboard, ConnectionHandler, Graph, InternalEvent, PanningHandler, RubberBandHandler, SelectionCellsHandler, SelectionHandler, TooltipHandler } from '@maxgraph/core';
 import { MyCustomGraph } from './my-custom-graph';
 import { MyCustomPopupMenuHandler } from './my-custom-popup-menu-handler';
 
@@ -24,6 +24,7 @@ export class GraphMenuComponent implements AfterViewInit{
     this.graph=new MyCustomGraph(this.graphContainer.nativeElement, undefined, [CellEditorHandler, TooltipHandler, SelectionCellsHandler, MyCustomPopupMenuHandler, ConnectionHandler, SelectionHandler, PanningHandler, RubberBandHandler]);
     this.graph.setTooltips(true);
     this.parent=this.graph.getDefaultParent();
+    
 
     this.graph.batchUpdate(()=>{
       const parent=this.parent;
@@ -33,11 +34,18 @@ export class GraphMenuComponent implements AfterViewInit{
         size: [100, 100],
         value: 'a',
         style:{
-          strokeColor:"none",
+          strokeColor:"transparent",
           
         }
       });
     });
+
+    
+  }
+
+  removeCell(){
+    const cell=this.graph.getSelectionCell();
+    Clipboard.removeCells(this.graph,[cell]);
   }
   
 }
