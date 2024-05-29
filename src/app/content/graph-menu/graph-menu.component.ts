@@ -24,6 +24,11 @@ export class GraphMenuComponent implements AfterViewInit{
     this.graph=new MyCustomGraph(this.graphContainer.nativeElement, undefined, [CellEditorHandler, TooltipHandler, SelectionCellsHandler, MyCustomPopupMenuHandler, ConnectionHandler, SelectionHandler, PanningHandler, RubberBandHandler]);
     this.graph.setTooltips(true);
     this.parent=this.graph.getDefaultParent();
+
+    this.graph.isCellEditable = (cell: Cell) => {
+      return !cell.isEdge();
+    }
+  
     
 
     this.graph.batchUpdate(()=>{

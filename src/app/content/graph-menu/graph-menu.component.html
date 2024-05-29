@@ -1,2 +1,6 @@
 <!-- <button (click)="removeCell()">remove</button> -->
-<div #graphContainer class="w-full h-full" style="background-color: gray;"></div>
+<div #graphContainer class="w-full h-full" style="background-color: gray;" id="graph-container"></div>
+@defer{
+{{graph}}
+{{graph.view.scale}}
+}

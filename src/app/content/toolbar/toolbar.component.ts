@@ -16,7 +16,7 @@ export class ToolbarComponent implements AfterViewInit{
   @ViewChild('tbContainer') tbContainer!:ElementRef;
 
   ngAfterViewInit(){
-    const toolbar = new MaxToolbar(this.tbContainer.nativeElement);
+  const toolbar = new MaxToolbar(this.tbContainer.nativeElement);
   toolbar.enabled = false;
 
   // Creates the model and the graph inside the container
